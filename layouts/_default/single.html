@@ -23,7 +23,7 @@
                 {{ .Params.author }}
                 <small>|</small>
               {{ end }}
-              {{ .Date.Format (.Site.Params.datesFormat.article | default "Jan 2, 2006") }}
+              <!--{{ .Date.Format (.Site.Params.datesFormat.article | default "Jan 2, 2006") }}-->
 
               {{ if or (.Site.Params.singlePages.readTime.enable | default true) (.Params.enableReadingTime) }}
               <span id="readingTime">
@@ -44,7 +44,7 @@
       </div>
       <div class="col-sm-12 col-md-12 col-lg-3">
         <div id="stickySideBar" class="sticky-sidebar">
-          {{ if .Params.toc | default true}}
+          {{ if .Params.toc | default false}}
           <aside class="toc">
               <h5>
                 {{ .Site.Params.terms.toc | default "Table Of Contents" }}

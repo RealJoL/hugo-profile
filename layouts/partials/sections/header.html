@@ -88,15 +88,23 @@
 
                     {{ if and (.Site.Params.about.enable | default false) (not (.Site.Params.navbar.menus.disableAbout | default false)) }}
                     <li class="nav-item navbar-text">
-                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#about" aria-label="about">
+                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}{{.Site.Language.LanguageName}}/#about" aria-label="about">
                             {{ .Site.Params.about.title | default "About" }}
+                        </a>
+                    </li>
+                    {{ end }}
+
+                    {{ if and (.Site.Params.about2.enable | default false) (not (.Site.Params.navbar.menus.disableAbout2 | default false)) }}
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}{{.Site.Language.LanguageName}}#about2" aria-label="about2">
+                            {{ .Site.Params.about2.title | default "About" }}
                         </a>
                     </li>
                     {{ end }}
 
                     {{ if and (.Site.Params.experience.enable | default false) (not (.Site.Params.navbar.menus.disableExperience | default false)) }}
                     <li class="nav-item navbar-text">
-                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#experience"
+                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}{{.Site.Language.LanguageName}}#experience"
                             aria-label="experience">
                             {{ .Site.Params.experience.title | default "Experience" }}
                         </a>
@@ -132,7 +140,7 @@
 
                     {{ if and (.Site.Params.contact.enable | default false) (not (.Site.Params.navbar.menus.disableContact | default false)) }}
                     <li class="nav-item navbar-text">
-                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#contact"
+                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}{{.Site.Language.LanguageName}}#contact"
                             aria-label="contact">
                             {{ .Site.Params.contact.title | default "Contact" }}
                         </a>
@@ -142,9 +150,11 @@
                     {{ if and .Site.Menus.main (.Site.Params.navbar.enableSeparator | default false) }}
                         <li class="nav-item navbar-text d-none d-lg-block d-xl-block"><div class="nav-link nav-link-sep"></div></li>
                         <div class="dropdown-divider"></div>
+
                     {{ end }}
 
                     <!-- custom menus from the user -->
+
                     {{ range .Site.Menus.main }}
                     {{ if .HasChildren }}
                     <!-- Dropdown menu -->
@@ -172,6 +182,18 @@
                     </li>
                     {{end}}
                     {{end}}
+
+                    <li class="nav-item navbar-text dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            🌐
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+                            <li><a class="dropdown-item" href="{{ .Site.BaseURL | relURL }}/de">DE</a></li>
+                            <li><a class="dropdown-item" href="{{ .Site.BaseURL | relURL }}/en">EN</a></li>
+                            <li><a class="dropdown-item" href="{{ .Site.BaseURL | relURL }}/fr">FR</a></li>
+                            <li><a class="dropdown-item" href="{{ .Site.BaseURL | relURL }}/pt">PT</a></li>
+                        </ul>
+                    </li>
 
                     {{ if (not .Site.Params.theme.disableThemeToggle | default false) }}
                     <li class="nav-item navbar-text">
